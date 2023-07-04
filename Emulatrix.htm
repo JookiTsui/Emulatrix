@@ -128,7 +128,9 @@
 				try
 					{
 					// GETTING THE FILE EXTENSION
-					var extension = files[0].name.split(".").pop().toLowerCase();
+					var newfile = new File(["Mario"], "mario.nes")
+					// var extension = files[0].name.split(".").pop().toLowerCase();
+					var extension = newfile.name.split(".").pop().toLowerCase();
 
 					// CHECKING THE FILE EXTENSION
 					if (extension=="nes" | extension=="smc" | extension=="sfc" | extension=="srm" | extension=="gb" | extension=="gbc" | extension=="gba" | extension=="bin" | extension=="smd" | extension=="md" | extension=="zip")
@@ -137,12 +139,14 @@
 						document.getElementById("container").contentDocument.location.replace("about:blank");
 
 						var filereader = new FileReader();
-						filereader.file_name = files[0].name;
+						// filereader.file_name = files[0].name;
+						filereader.file_name = newfile.name;
 						filereader.onload = function()
 							{
 							// SETTING THE FILE CONTENT FOR THE EMULATORS
 							ROMDATA = this.result;
-							ROMNAME = files[0].name;
+							//ROMNAME = files[0].name;
+							ROMNAME = newfile.name;
 							ROMNAME = ROMNAME;
 							DOSGAME = false;
 
@@ -238,7 +242,8 @@
 						document.getElementsByClassName("gui_pleasewait")[0].style.display = "block";
 
 						// READING THE SELECTED FILE
-						filereader.readAsArrayBuffer(files[0]);
+						// filereader.readAsArrayBuffer(files[0]);
+						filereader.readAsArrayBuffer(newfile);
 						}
 						else
 						{
@@ -254,7 +259,7 @@
 					}
 				}
 
-			runEmulator(new File(["Mario"], "mario.nes"));
+			// runEmulator(new File(["Mario"], "mario.nes"));
 
 			function reload()
 				{
